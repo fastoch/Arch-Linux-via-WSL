@@ -29,7 +29,9 @@ I recommend Scoop (scoop) over Chocolatey (choco) because it is better organized
 
 - Ensure that you have PowerShell 5.1 or later installed on your system:
   - `$PSVersionTable`
-- set the PowerShell execution policy to allow script execution:
+- check the current execution policy:
+  - `Get-ExecutionPolicy`
+- if needed, set the PowerShell execution policy to allow script execution:
   - `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 - Execute the following command to download and install Scoop:
   - `irm get.scoop.sh | iex`
