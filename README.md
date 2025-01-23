@@ -4,7 +4,7 @@ Running Linux on Windows via the Windows Subsystem for Linux (WSL) offers develo
 
 **Sources**:
 - https://dev.to/jrcharney/archwsl-brings-arch-linux-to-wsl-and-more-1jm4
-- https://github.com/jrcharney/ArchWSLPlusPlus
+- https://github.com/jrcharney/ArchWSLPlusPlus/blob/main/doc/00-START_HERE.md
 
 While most users install Ubuntu, you can set up **any Linux distribution** you like, including **Arch**.  
 
@@ -91,6 +91,11 @@ A lot of folks are recommending using Meslo.
 ---
 
 ## Install ArchWSL
+
+Before we run WSL for the first time, we need to set it's version to version 2:
+```powershell
+wsl --set-version 2
+```
 
 
 
