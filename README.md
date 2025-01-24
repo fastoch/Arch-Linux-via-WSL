@@ -17,7 +17,7 @@ While most users install Ubuntu, you can set up **any Linux distribution** you l
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
-- Go to Windows Features and enable Windows Subsystem for Linux
+- Go to 'Windows Features' and enable 'Windows Subsystem for Linux'
 - reboot
 
 ---
@@ -112,9 +112,7 @@ scoop install archwsl
 
 ---
 
-# Setting up our Arch Linux instance 
-
-We are now ready to take care of some basic tasks to get Arch Linux up and running.
+## Getting Arch up and running
 
 Start by running the Arch.exe program:
 ```powershell
@@ -128,7 +126,7 @@ We need to run it twice because the first time is for installing it.
 >To exit **bash** (the default Linux shell) and go back to **powershell**, simply run `exit`
 ---
 
-Then, lets set our root password:
+Then, let's set our root password:
 ```bash
 [root@hostname ~]# passwd
 ```
@@ -140,11 +138,15 @@ Create the sudoers file:
 ```bash
 [root@crystal]# echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/wheel	
 ```
+The above command creates a new file (wheel) in the /etc/sudoers.d directory that grants members of the wheel group the ability to execute any command as any user on the system. 
 
 Create a new user:
 ```bash
 [root@crystal]# useradd -m -G wheel -s /bin/bash username
 ```
+The `-m` option tells the system to create a home directory for the new user if it does not already exist.  
+The `-G wheel` is for adding the user to the wheel group, meaning the sudoers group.  
+The `-s /bin/bash` is for setting bash as the user's default shell.
 
 Set the password for the new user
 ```bash
