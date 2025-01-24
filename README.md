@@ -97,6 +97,15 @@ Before we run WSL for the first time, we need to set it's version to version 2:
 wsl --set-version 2
 ```
 
+To see the installed distributions and their WSL versions:
+```powershell
+wsl -l -v
+```
+
+Now we need to get ArchWSL from the extras bucket:
+```powershell
+
+```
 
 
 ---
