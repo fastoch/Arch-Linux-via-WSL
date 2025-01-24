@@ -13,7 +13,7 @@ While most users install Ubuntu, you can set up **any Linux distribution** you l
 ## Prerequisites
 
 - If you're running Windows 11, open the Windows terminal as admin.
-- Enable Hyper-V via
+- Enable Hyper-V via this command:
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
@@ -93,9 +93,10 @@ A lot of folks are recommending using Meslo.
 
 ## Install ArchWSL
 
-Before we run WSL for the first time, we need to set it's version to version 2:
+Before we run WSL for the first time, we need to set its version to version 2, and to update its kernel:
 ```powershell
-wsl --set-version 2
+wsl --set-default-version 2
+wsl --update
 ```
 
 To see the installed distributions and their WSL versions later on:
@@ -114,9 +115,14 @@ We are now ready to take care of some basic tasks to get Arch Linux up and runni
 Start by running the Arch.exe program:
 ```powershell
 arch.exe
+arch.exe
 ```
+We run it twice: one time for installing and second time for running it.
 
-First lets set our root password with passwd, you could use your windows password, but a different password would be more secure.
+Then, lets set our root password:
+```bash
+[root@hostname ~]# passwd
+```
 
 
 
