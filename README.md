@@ -10,13 +10,14 @@ While most users install Ubuntu, you can set up **any Linux distribution** you l
 
 ---
 
-## Enable Hyper-V
+## Prerequisites
 
 - If you're running Windows 11, open the Windows terminal as admin.
 - Enable Hyper-V via
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
+- Go to Windows Features and enable Windows Subsystem for Linux
 - reboot
 
 ---
