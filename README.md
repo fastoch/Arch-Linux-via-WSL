@@ -140,12 +140,14 @@ Create the sudoers file:
 ```
 The above command creates a new file (wheel) in the /etc/sudoers.d directory that grants members of the wheel group the ability to execute any command as any user on the system. 
 
-Create a new user:
+---
+
+Create a new user and make it a sudoer:
 ```bash
 [root@hostname ~]# useradd -m -G wheel -s /bin/bash username
 ```
 The `-m` option tells the system to create a home directory for the new user if it does not already exist.  
-The `-G wheel` is for adding the user to the wheel group, meaning the sudoers group.  
+The `-G wheel` is for adding the user to the wheel group, which makes it a sudoer.  
 The `-s /bin/bash` is for setting bash as the user's default shell.
 
 Set the password for the new user
@@ -182,16 +184,40 @@ sudo pacman-key --populate
 ```
 The first line initializes the GnuPG keyring for pacman, which is essential for managing and verifying the authenticity of packages.  
 This is a crucial step in managing package signatures within the Arch Linux ecosystem.  
-The second line
 
+The second line fetches and installs the default GPG keys from the Arch Linux keyring, which are necessary for verifying package signatures.  
+This ensures that the packages you install come from trusted sources and have not been tampered with during transit.  
+
+---
+
+Then we need to update the system by synchronizing the package database and upgrading all installed packages:
 ```bash
 sudo pacman -Syu
 ```
 
+---
 
-sudo pacman -S archlinux-keyring                                    # Note: ArchWSL says this is optional, but THIS PACKAGE IS MANDATORY! It should be the first one installed.
-sudo pacman -S --needed base-devel git                              # When you install the `base-devel` package for ArchWSL, `fakeroot` and `fakeroot-tcp` are in conflict. When asked if you want to replace `fakeroot-tcp` with `fakeroot` SAY NO!
-mkdir Projects Downloads Documents Music Pictures Videos            # Just some placeholder directories. I should really make them soft-links to their Windows counterpart later.
+After that, install the Arch Linux keyring, which is necessary to install ANY package from the Arch Linux repository:
+```bash
+sudo pacman -S archlinux-keyring
+```
+
+---
+
+Let's install the base development tools + Git:
+```bash
+sudo pacman -S --needed base-devel git
+```
+When you install the `base-devel` package for ArchWSL, `fakeroot` and `fakeroot-tcp` are in conflict.  
+When asked if you want to replace `fakeroot-tcp` with `fakeroot` SAY NO!
+
+---
+
+Create some placeholder directories:
+```bash
+mkdir Projects Downloads Documents Music Pictures Videos
+```
+
 mkdir bin                                                           # Add this directory. It should be added to your `$PATH`. You can use this directory to launch scripts that you write to do tasks
 cd Downloads                                                        # Switch to the Downloads directory
 git clone https://aur.archlinux.org/yay.git                                 # This will install `yay` which will allow you access to the ArchLinux User Repository.
