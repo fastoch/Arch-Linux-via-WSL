@@ -158,6 +158,12 @@ Return to powershell:
 [root@crystal]# exit
 ```								
 
+We need to return to the Powershell for a moment to set the default user.
+```powershell
+
+```
+
+
 
 ---
 EOF
