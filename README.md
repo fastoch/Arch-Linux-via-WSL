@@ -136,13 +136,13 @@ That command temporarily gives the user the power to run root command with the `
 
 Create the sudoers file:
 ```bash
-[root@crystal]# echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/wheel	
+[root@hostname ~]# echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/wheel	
 ```
 The above command creates a new file (wheel) in the /etc/sudoers.d directory that grants members of the wheel group the ability to execute any command as any user on the system. 
 
 Create a new user:
 ```bash
-[root@crystal]# useradd -m -G wheel -s /bin/bash username
+[root@hostname ~]# useradd -m -G wheel -s /bin/bash username
 ```
 The `-m` option tells the system to create a home directory for the new user if it does not already exist.  
 The `-G wheel` is for adding the user to the wheel group, meaning the sudoers group.  
@@ -150,18 +150,36 @@ The `-s /bin/bash` is for setting bash as the user's default shell.
 
 Set the password for the new user
 ```bash
-[root@crystal]# passwd fastoch
+[root@hostname ~]# passwd fastoch
 ```
 
 Return to powershell:     
 ```bash
-[root@crystal]# exit
+[root@hostname ~]# exit
 ```								
 
 We need to return to the Powershell for a moment to set the default user.
 ```powershell
-
+arch config --default-user username					# Note: Use your username not mine!
 ```
+
+Once we have our default user, we can launch Arch again.  
+Thanks to how ArchWSL is set up, Arch will be an option in our dropdown menu on the Windows Terminal, but we can set it as the default option via the Terminal settings.  
+
+The next time we start our Linux terminal, we should see something like this as our user prompt:
+```bash
+[username@hostname ~]$
+```
+
+Congratulations! You now have LINUX installed on Window!  
+The next part will add all those rad toys to it to make it look awesome and a lot less scary.
+
+---
+
+## Customizing Arch Linux
+
+If this were actually Arch Linux, we could have used a script called `archinstall` to knock out some of this stuff. Since we don't have it, we got to do it manually.  
+
 
 
 
