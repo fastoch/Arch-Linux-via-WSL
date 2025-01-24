@@ -97,15 +97,26 @@ Before we run WSL for the first time, we need to set it's version to version 2:
 wsl --set-version 2
 ```
 
-To see the installed distributions and their WSL versions:
+To see the installed distributions and their WSL versions later on:
 ```powershell
 wsl -l -v
 ```
 
 Now we need to get ArchWSL from the extras bucket:
 ```powershell
-
+scoop bucket add extras
+scoop install archwsl
 ```
+
+We are now ready to take care of some basic tasks to get Arch Linux up and running.
+
+Start by running the Arch.exe program:
+```powershell
+arch.exe
+```
+
+First lets set our root password with passwd, you could use your windows password, but a different password would be more secure.
+
 
 
 ---
