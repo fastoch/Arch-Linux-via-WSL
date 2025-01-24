@@ -110,6 +110,10 @@ scoop bucket add extras
 scoop install archwsl
 ```
 
+---
+
+# Setting up our Arch Linux instance 
+
 We are now ready to take care of some basic tasks to get Arch Linux up and running.
 
 Start by running the Arch.exe program:
@@ -129,14 +133,28 @@ Then, lets set our root password:
 [root@hostname ~]# passwd
 ```
 
-Once you have set up your root password, let's create our regular user and give them permission to use the sudo command:
+Once you have set up your root password, let's create our regular user and give them permission to use the sudo command.  
+That command temporarily gives the user the power to run root command with the `sudo` prefix.
+
+Create the sudoers file:
 ```bash
-[root@crystal]# echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/wheel		# This creates the sudoers file
-[root@crystal]# useradd -m -G wheel -s /bin/bash fastoch			# Create a new user named fastoch
-[root@crystal]# passwd fastoch						# Set the password for the new user
-[root@crystal]# exit								# Return to powershell
+[root@crystal]# echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/wheel	
 ```
-That temporarily gives the user the power to run root command with the `sudo` prefix.
+
+Create a new user:
+```bash
+[root@crystal]# useradd -m -G wheel -s /bin/bash username
+```
+
+Set the password for the new user
+```bash
+[root@crystal]# passwd fastoch
+```
+
+Return to powershell:     
+```bash
+[root@crystal]# exit
+```								
 
 
 ---
