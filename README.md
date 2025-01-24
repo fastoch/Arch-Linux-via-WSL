@@ -218,14 +218,28 @@ Create some placeholder directories:
 mkdir Projects Downloads Documents Music Pictures Videos
 ```
 
-mkdir bin                                                           # Add this directory. It should be added to your `$PATH`. You can use this directory to launch scripts that you write to do tasks
-cd Downloads                                                        # Switch to the Downloads directory
-git clone https://aur.archlinux.org/yay.git                                 # This will install `yay` which will allow you access to the ArchLinux User Repository.
+---  I stopped there
+
+Install an **AUR** helper:
+```bash
+cd Downloads                                         # Switch to the Downloads directory
+git clone https://aur.archlinux.org/yay.git          # install `yay` which allows you access to the Arch User Repository
+```
+Yay, which stands for **Yet Another Yaourt**, is an AUR (Arch User Repository) helper designed to simplify the process of managing packages.  
+AUR is a **fantastic** community-driven repository specifically designed for users of Arch Linux.  
+
+
+
+
+```bash
 cd yay                                                                      # Go to the yay directory (This should be in the Downloads directory)
 makepkg -si                                                                 # Make the `yay` package, this will also install the Go Language (`golang`) that `yay` needs to do stuff.
 yay --version                                                               # Verify that yay was installed.
 rm -rf ~/yay                                                                # With yay successfully installed, you may remove the `yay` folder in your home directory. (This is optional)
 cd ~
+```
+
+```bash
 sudo pacman -S openssh github-cli pv fzf clang llvm rust python-pip lm_sensors psutils python-psutil neofetch htop bashtop imagemagick jq
 ```
 
