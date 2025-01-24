@@ -171,14 +171,37 @@ The next time we start our Linux terminal, we should see something like this as 
 [username@hostname ~]$
 ```
 
-Congratulations! You now have LINUX installed on Window!  
-The next part will add all those rad toys to it to make it look awesome and a lot less scary.
-
 ---
 
-## Customizing Arch Linux
+## Setting up our custom Arch Linux
 
-If this were actually Arch Linux, we could have used a script called `archinstall` to knock out some of this stuff. Since we don't have it, we got to do it manually.  
+Here are the first commands you should issue:
+```bash
+sudo pacman-key --init
+sudo pacman-key --populate
+```
+The first line initializes the GnuPG keyring for pacman, which is essential for managing and verifying the authenticity of packages.  
+This is a crucial step in managing package signatures within the Arch Linux ecosystem.  
+The second line
+
+```bash
+sudo pacman -Syu
+```
+
+
+sudo pacman -S archlinux-keyring                                    # Note: ArchWSL says this is optional, but THIS PACKAGE IS MANDATORY! It should be the first one installed.
+sudo pacman -S --needed base-devel git                              # When you install the `base-devel` package for ArchWSL, `fakeroot` and `fakeroot-tcp` are in conflict. When asked if you want to replace `fakeroot-tcp` with `fakeroot` SAY NO!
+mkdir Projects Downloads Documents Music Pictures Videos            # Just some placeholder directories. I should really make them soft-links to their Windows counterpart later.
+mkdir bin                                                           # Add this directory. It should be added to your `$PATH`. You can use this directory to launch scripts that you write to do tasks
+cd Downloads                                                        # Switch to the Downloads directory
+git clone https://aur.archlinux.org/yay.git                                 # This will install `yay` which will allow you access to the ArchLinux User Repository.
+cd yay                                                                      # Go to the yay directory (This should be in the Downloads directory)
+makepkg -si                                                                 # Make the `yay` package, this will also install the Go Language (`golang`) that `yay` needs to do stuff.
+yay --version                                                               # Verify that yay was installed.
+rm -rf ~/yay                                                                # With yay successfully installed, you may remove the `yay` folder in your home directory. (This is optional)
+cd ~
+sudo pacman -S openssh github-cli pv fzf clang llvm rust python-pip lm_sensors psutils python-psutil neofetch htop bashtop imagemagick jq
+```
 
 
 
