@@ -114,16 +114,29 @@ We are now ready to take care of some basic tasks to get Arch Linux up and runni
 
 Start by running the Arch.exe program:
 ```powershell
-arch.exe
-arch.exe
+arch
+arch
 ```
-We run it twice: one time for installing and second time for running it.
+We need to run it twice because the first time is for installing it.  
+
+---
+>[!note]
+>To exit **bash** (the default Linux shell) and go back to **powershell**, simply run `exit`
+---
 
 Then, lets set our root password:
 ```bash
 [root@hostname ~]# passwd
 ```
 
+Once you have set up your root password, let's create our regular user and give them permission to use the sudo command:
+```bash
+[root@crystal]# echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/wheel		# This creates the sudoers file
+[root@crystal]# useradd -m -G wheel -s /bin/bash fastoch			# Create a new user named fastoch
+[root@crystal]# passwd fastoch						# Set the password for the new user
+[root@crystal]# exit								# Return to powershell
+```
+That temporarily gives the user the power to run root command with the `sudo` prefix.
 
 
 ---
